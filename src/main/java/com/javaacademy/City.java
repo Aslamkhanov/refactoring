@@ -1,16 +1,22 @@
 package com.javaacademy;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
  * Город
  */
+@Getter
+@ToString
 public class City {
     public final String name;
+    @ToString.Exclude
+    @Setter
     public int peopleCount;
 
-    public City(String name, Integer peopleCount) {
-        if (name == null) {
-            throw new NullPointerException("name is marked non-null, but is null");
-        }
+    public City(@NonNull String name, Integer peopleCount) {
         this.name = name;
         this.peopleCount = peopleCount;
     }
@@ -23,23 +29,5 @@ public class City {
         };
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Integer getPeopleCount() {
-        return peopleCount;
-    }
-
-    public void setPeopleCount(Integer peopleCount) {
-        this.peopleCount = peopleCount;
-    }
-
     //Внимание, только город выводится на экран
-    @Override
-    public String toString() {
-        return "City{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 }
